@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript Example</h1>
+    <script>
+        let Alice = [1, 2, 3];
+        let Bob = [7, 1, 3];
+        let scoreA = 0;
+        let scoreB = 0; 
+        for (let i = 0; i < Alice.length; i++) {
+            if (Alice[i] > Bob[i]) {
+                scoreA++;
+            } else if (Bob[i] > Alice[i]) {
+                scoreB++;
+            }
+        }
+        console.log('Alice:', scoreA);
+        console.log('Bob:', scoreB);
+    </script>
+</body>
+</html>
