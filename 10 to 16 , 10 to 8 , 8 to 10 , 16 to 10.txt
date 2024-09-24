@@ -1,0 +1,86 @@
+public static String convertToBase8(int number) {
+    if (number == 0) return "0";
+        
+    StringBuilder base8string = new StringBuilder();
+
+    while (number > 0) {
+        int remainder = number % 8;
+        base8string.append(remainder);
+        number /= 8;
+    }
+
+    return base8string.reverse().toString();
+}
+public static String convertToBase16(int number) {
+    if (number == 0) return "0";
+        
+    StringBuilder base16string = new StringBuilder();
+
+    while (number > 0) {
+        int remainder = number % 16;
+        if (remainder < 10) {
+            base16string.append(remainder);
+        } else {
+            base16string.append((char) ('A' + (remainder - 10)));
+        }
+        number /= 16;
+    }
+
+    return base16string.reverse().toString();
+}
+System.out.println("\nBase 10 to Base 8 conversion:");
+for (int num : base10Numbers) {
+    String base8 = convertToBase8(num);
+    System.out.println("Base 10: " + num + " -> Base 8: " + base8);
+}
+
+System.out.println("\nBase 10 to Base 16 conversion:");
+for (int num : base10Numbers) {
+    String base16 = convertToBase16(num);
+    System.out.println("Base 10: " + num + " -> Base 16: " + base16);
+}
+
+
+public static int convertBase8ToBase10(String octal) {
+    int base10 = 0;
+    int power = 0;
+
+    for (int i = octal.length() - 1; i >= 0; i--) {
+        char c = octal.charAt(i);
+        base10 += (c - '0') * Math.pow(8, power);
+        power++;
+    }
+    return base10;
+}
+
+
+public static int convertBase16ToBase10(String hex) {
+    int base10 = 0;
+    int power = 0;
+
+    for (int i = hex.length() - 1; i >= 0; i--) {
+        char c = hex.charAt(i);
+        if (c >= '0' && c <= '9') {
+            base10 += (c - '0') * Math.pow(16, power);
+        } else if (c >= 'A' && c <= 'F') {
+            base10 += (c - 'A' + 10) * Math.pow(16, power);
+        }
+        power++;
+    }
+    return base10;
+}
+
+
+System.out.println("\nBase 8 to Base 10 conversion:");
+for (int num : base10Numbers) {
+    String base8 = convertToBase8(num);
+    int backToBase10FromBase8 = convertBase8ToBase10(base8);
+    System.out.println("Base 8: " + base8 + " -> Back to Base 10: " + backToBase10FromBase8);
+}
+
+System.out.println("\nBase 16 to Base 10 conversion:");
+for (int num : base10Numbers) {
+    String base16 = convertToBase16(num);
+    int backToBase10FromBase16 = convertBase16ToBase10(base16);
+    System.out.println("Base 16: " + base16 + " -> Back to Base 10: " + backToBase10FromBase16);
+}
