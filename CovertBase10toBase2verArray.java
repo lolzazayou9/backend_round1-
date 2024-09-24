@@ -1,8 +1,29 @@
+import java.util.Scanner;
+
 public class CovertBase10toBase2verArray {
     public static void main(String[] args) {
-        int[] base10Numbers = {123, 456, 789};
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("จำนวนครั้งที่ต้องการกรอกข้อมูล : ");
+        int count = scanner.nextInt();
+        
+        int[] base10Numbers = new int[count];
+        int base10[] = {123,456,789};
+        int countarray = 0;
+        System.out.println("ใส่ " + count + " จำนวน สำหรับเลขฐาน10 :");
+        for (int i = 0; i < count; i++) {
+            base10Numbers[i] = scanner.nextInt();
+        }
 
-        System.out.println("Base 10 to Base 2 conversion:");
+        System.out.println("จำนวนกลุ่มข้อมูล : " + count);
+        
+        for(int i = 0 ; i < base10.length ; i++){
+            countarray = base10.length;
+        }
+
+        System.out.println("จำนวนข้อมูลของ bae10[] : "+countarray);
+
+        System.out.println("\nBase 10 to Base 2 conversion:");
         for (int num : base10Numbers) {
             String base2 = convertToBase2(num);
             System.out.println("Base 10: " + num + " -> Base 2: " + base2);
@@ -12,10 +33,22 @@ public class CovertBase10toBase2verArray {
         for (int num : base10Numbers) {
             String base2 = convertToBase2(num);
             int backToBase10 = convertToBase10(base2);
-            System.out.println("Original Base 10: " + num + 
-                               " -> Base 2: " + base2 + 
+            System.out.println( 
+                               "Base 2: " + base2 + 
                                " -> Back to Base 10: " + backToBase10);
         }
+
+        // System.out.println("\nVerification of conversion accuracy:");
+        // for (int num : base10Numbers) {
+        //     String base2 = convertToBase2(num);
+        //     int backToBase10 = convertToBase10(base2);
+        //     boolean isCorrect = (num == backToBase10);
+        //     System.out.println("Original: " + num + 
+        //                        ", After conversion: " + backToBase10 + 
+        //                        ", Correct: " + isCorrect);
+        // }
+
+        scanner.close();
     }
 
     public static String convertToBase2(int number) {
@@ -42,7 +75,6 @@ public class CovertBase10toBase2verArray {
             }
             power++;
         }
-
         return base10;
     }
 }
